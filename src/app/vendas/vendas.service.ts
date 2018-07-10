@@ -26,4 +26,8 @@ export class VendasService {
   adicionar(venda: any): Observable<any> {
     return this.http.post<any>(`${this.api}/vendas`, venda);
   }
+
+  deletar(venda: any): Observable<any> {
+    return this.http.delete<any>(`${this.api}/vendas/delete/${venda.id}`);
+  }
 }

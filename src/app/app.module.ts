@@ -14,6 +14,9 @@ import { InputTextModule } from 'primeng/inputtext';
 import { PanelModule } from 'primeng/panel';
 import { ButtonModule } from 'primeng/button';
 import { GrowlModule } from 'primeng/growl';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {ConfirmationService} from 'primeng/api';
+
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -41,11 +44,12 @@ registerLocaleData(localePt);
     InputTextModule,
     PanelModule,
     ButtonModule,
-    GrowlModule
+    GrowlModule,
+    ConfirmDialogModule,
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt' },
-    MessageService
+    MessageService, ConfirmationService
   ],
   bootstrap: [AppComponent]
 })
