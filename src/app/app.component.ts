@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  title = 'Sistema de Vendas';
+  items: MenuItem[];
+  ngOnInit() {
+    this.items = [
+        {
+            label: 'Cadastros',
+            items: [
+                {label: 'Clientes', routerLink: '/clientes'},
+                {label: 'Produtos', routerLink: '/produtos'},
+                {label: 'Vendas', routerLink: '/vendas'}
+            ]
+        }
+    ];
+}
 }

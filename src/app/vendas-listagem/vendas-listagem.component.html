@@ -2,7 +2,7 @@
   <div class="ui-g-12">
     <p-confirmDialog></p-confirmDialog>
 
-    <p-table [value]="vendas" responsive="true">
+    <p-table [value]="vendas" [paginator]="true" [rows]="2" responsive="true">
       <ng-template pTemplate="caption">
         Listagem de vendas
       </ng-template>

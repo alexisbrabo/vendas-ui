@@ -16,21 +16,26 @@ import { ButtonModule } from 'primeng/button';
 import { GrowlModule } from 'primeng/growl';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmationService} from 'primeng/api';
+import {MenubarModule} from 'primeng/menubar';
+import {MenuItem} from 'primeng/api';
 
 
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
 import { VendasListagemComponent } from './vendas-listagem/vendas-listagem.component';
 import { VendaCadastroComponent } from './venda-cadastro/venda-cadastro.component';
+import { AppRoutingModule } from './/app-routing.module';
+import { VendaGeralComponent } from './venda-geral/venda-geral.component';
+import { ClienteCadastroEListagemComponent } from './cliente-cadastro-e-listagem/cliente-cadastro-e-listagem.component';
 
 registerLocaleData(localePt);
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
     VendasListagemComponent,
-    VendaCadastroComponent
+    VendaCadastroComponent,
+    VendaGeralComponent,
+    ClienteCadastroEListagemComponent
   ],
   imports: [
     BrowserModule,
@@ -46,6 +51,8 @@ registerLocaleData(localePt);
     ButtonModule,
     GrowlModule,
     ConfirmDialogModule,
+    MenubarModule,
+    AppRoutingModule,
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt' },

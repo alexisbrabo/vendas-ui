@@ -1,7 +1,7 @@
-<app-navbar></app-navbar>
+<p-menubar [model]="items">
+        <div>
+            <button pButton label="Sair" icon="fa fa-sign-out"></button>
+        </div>
+</p-menubar>
 
-<p-growl></p-growl>
-
-<app-venda-cadastro (vendaSalva)="listagem.listar()"></app-venda-cadastro>
-
-<app-vendas-listagem #listagem></app-vendas-listagem>
+<router-outlet></router-outlet>
