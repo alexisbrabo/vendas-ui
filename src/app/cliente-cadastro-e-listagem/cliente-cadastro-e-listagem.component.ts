@@ -15,6 +15,7 @@ export class ClienteCadastroEListagemComponent implements OnInit {
 
   cliente: any;
   clientes: Array<any>;
+  errorMsg;
 
   constructor(private clienteService: ClientesService,
      private messageService: MessageService, private confirmationService: ConfirmationService) { }
@@ -26,6 +27,16 @@ export class ClienteCadastroEListagemComponent implements OnInit {
 
   novoCadastro() {
     this.cliente = { nome: '' };
+  }
+
+  atualizarCliente(cliente: any){
+    this.clienteService.atualizar(cliente).subscribe(response => {
+    
+      this.messageService.add({ severity: 'info', detail: 'Cliente editado com sucesso'});
+
+      this.clienteService.listarClientes().subscribe(response => this.clientes = response);
+
+    })
   }
 
   adicionar(frm: FormGroup) {
@@ -54,8 +65,9 @@ export class ClienteCadastroEListagemComponent implements OnInit {
         this.messageService.add({ severity: 'success', detail: 'Cliente deletado com sucesso'})
     
         this.clienteService.listarClientes().subscribe(response => this.clientes = response);
-        })
-      }
+        }, error => {
+          this.messageService.add({ severity: 'error', detail: 'Não foi possível deletar o cliente'})}
+      )}
     });
 
     
