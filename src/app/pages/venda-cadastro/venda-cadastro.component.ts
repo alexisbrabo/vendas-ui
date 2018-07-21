@@ -1,8 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { VendasService } from '../vendas/vendas.service';
 import { FormGroup } from '@angular/forms';
 
 import { MessageService } from 'primeng/components/common/messageservice';
+import { VendasService } from '../../services/vendas/vendas.service';
 
 @Component({
   selector: 'app-venda-cadastro',

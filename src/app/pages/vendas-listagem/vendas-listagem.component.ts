@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { VendasService } from '../vendas/vendas.service';
 import { MessageService } from 'primeng/components/common/messageservice';
 import { ConfirmationService } from 'primeng/api';
+import { VendasService } from '../../services/vendas/vendas.service';
 
 @Component({
   selector: 'app-vendas-listagem',

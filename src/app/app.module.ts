@@ -21,11 +21,12 @@ import {MenuItem} from 'primeng/api';
 
 
 import { AppComponent } from './app.component';
-import { VendasListagemComponent } from './vendas-listagem/vendas-listagem.component';
-import { VendaCadastroComponent } from './venda-cadastro/venda-cadastro.component';
 import { AppRoutingModule } from './/app-routing.module';
-import { VendaGeralComponent } from './venda-geral/venda-geral.component';
-import { ClienteCadastroEListagemComponent } from './cliente-cadastro-e-listagem/cliente-cadastro-e-listagem.component';
+import { VendaCadastroComponent } from './pages/venda-cadastro/venda-cadastro.component';
+import { VendaGeralComponent } from './pages/venda-geral/venda-geral.component';
+import { ClienteCadastroEListagemComponent } from './pages/cliente-cadastro-e-listagem/cliente-cadastro-e-listagem.component';
+import { VendasListagemComponent } from './pages/vendas-listagem/vendas-listagem.component';
+import { ProdutoCadastroEListagemComponent } from './pages/produto-cadastro-e-listagem/produto-cadastro-e-listagem.component';
 
 registerLocaleData(localePt);
 
@@ -35,7 +36,8 @@ registerLocaleData(localePt);
     VendasListagemComponent,
     VendaCadastroComponent,
     VendaGeralComponent,
-    ClienteCadastroEListagemComponent
+    ClienteCadastroEListagemComponent,
+    ProdutoCadastroEListagemComponent
   ],
   imports: [
     BrowserModule,

@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ClientesService } from '../clientes/clientes.service';
 import { MessageService } from 'primeng/components/common/messageservice';
 
 import { FormGroup } from '@angular/forms';
-import { VendasService } from '../vendas/vendas.service';
 import { ConfirmationService } from 'primeng/api';
+import { ClientesService } from '../../services/clientes/clientes.service';
 
 @Component({
   selector: 'app-cliente-cadastro-e-listagem',
