@@ -33,6 +33,7 @@
                 <ng-template pTemplate="body" let-cliente>
                   <tr>
                       <td pEditableColumn>
+                          <span class="ui-column-title">Cliente</span>
                           <p-cellEditor>
                               <ng-template pTemplate="input">
                                   <input type="text" (blur)="atualizarCliente(cliente)" (keydown.enter)="atualizarCliente(cliente)" [(ngModel)]="cliente.nome" name="nome" id="nome">
@@ -42,15 +43,16 @@
                               </ng-template>
                           </p-cellEditor>
                       </td>
-                    <td> <span class="ui-column-title">Ação</span> 
+                    <td >
+                      <span class="ui-column-title">Ação</span>
                       <button pButton icon="pi pi-trash" type="button" (click)="deletar(cliente)"></button>
-                      <button pButton icon="pi pi-pencil" type="button" (click)="deletar(cliente)"></button> </td>
+                    </td>
                   </tr>
                 </ng-template>
   
                 <ng-template pTemplate="emptymessage" let-item>
                   <tr>
-                    <td colspan="4">Nenhum cliente cadastrado</td>
+                    <td colspan="2">Nenhum cliente cadastrado</td>
                   </tr>
                 </ng-template>
               </p-table>
