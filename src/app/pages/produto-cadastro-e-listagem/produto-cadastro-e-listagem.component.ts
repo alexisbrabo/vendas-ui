@@ -17,7 +17,7 @@ export class ProdutoCadastroEListagemComponent implements OnInit {
   errorMsg;
 
   constructor(private produtosService: ProdutosService,
-     private messageService: MessageService, private confirmationService: ConfirmationService) { }
+    private messageService: MessageService, private confirmationService: ConfirmationService) { }
 
   ngOnInit() {
     this.produtosService.listarProdutos().subscribe(response => this.produtos = response);
@@ -25,13 +25,13 @@ export class ProdutoCadastroEListagemComponent implements OnInit {
   }
 
   novoCadastro() {
-    this.produto = { nome: '', valor: ''};
+    this.produto = { nome: '', valor: '' };
   }
 
-  atualizarProduto(produto: any){
+  atualizarProduto(produto: any) {
     this.produtosService.atualizar(produto).subscribe(response => {
-    
-      this.messageService.add({ severity: 'info', detail: 'Produto editado com sucesso'});
+
+      this.messageService.add({ severity: 'info', detail: 'Produto editado com sucesso' });
 
       this.produtosService.listarProdutos().subscribe(response => this.produtos = response);
 
@@ -39,12 +39,12 @@ export class ProdutoCadastroEListagemComponent implements OnInit {
   }
 
   adicionar(frm: FormGroup) {
-      this.produtosService.adicionar(this.produto).subscribe(response => {
+    this.produtosService.adicionar(this.produto).subscribe(response => {
       frm.reset();
 
       this.novoCadastro();
 
-      this.messageService.add({ severity: 'success', detail: 'Produto cadastrado com sucesso'})
+      this.messageService.add({ severity: 'success', detail: 'Produto cadastrado com sucesso' })
 
       this.produtosService.listarProdutos().subscribe(response => this.produtos = response);
     })
@@ -59,17 +59,19 @@ export class ProdutoCadastroEListagemComponent implements OnInit {
       acceptLabel: 'Sim',
       rejectLabel: 'Não',
       accept: () => {
-        this.produtosService.deletar(produto).subscribe(response =>{
+        this.produtosService.deletar(produto).subscribe(response => {
 
-        this.messageService.add({ severity: 'success', detail: 'Produto deletado com sucesso'})
-    
-        this.produtosService.listarProdutos().subscribe(response => this.produtos = response);
+          this.messageService.add({ severity: 'success', detail: 'Produto deletado com sucesso' })
+
+          this.produtosService.listarProdutos().subscribe(response => this.produtos = response);
         }, error => {
-          this.messageService.add({ severity: 'error', detail: 'Não foi possível deletar o produto'})}
-      )}
+          this.messageService.add({ severity: 'error', detail: 'Não foi possível deletar o produto' })
+        }
+        )
+      }
     });
 
-    
+
   }
 
 }

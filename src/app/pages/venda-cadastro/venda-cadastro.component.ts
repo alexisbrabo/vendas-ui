@@ -36,7 +36,7 @@ export class VendaCadastroComponent implements OnInit {
     this.item.total = (this.item.produto.valor * this.item.quantidade);
 
     this.venda.itens.push(this.item);
-    
+
     this.item = {};
 
     this.calcularTotal();
@@ -48,13 +48,13 @@ export class VendaCadastroComponent implements OnInit {
 
       this.novaVenda();
 
-      this.messageService.add({ severity: 'success', detail: 'Venda adicionada com sucesso'})
+      this.messageService.add({ severity: 'success', detail: 'Venda adicionada com sucesso' })
 
       this.vendaSalva.emit(response);
     })
   }
 
-  calcularTotal(){
+  calcularTotal() {
     const totalItens = this.venda.itens.map(i => (
       i.produto.valor * i.quantidade
     )).reduce((total, v) => total + v, 0);

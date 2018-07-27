@@ -2,22 +2,29 @@
   <div class="ui-g-12">
     <p-confirmDialog></p-confirmDialog>
 
-    <p-table [value]="vendas" [paginator]="true" [rows]="2" responsive="true">
+    <p-table #dt [value]="vendas" [paginator]="true" [rows]="5" responsive="true">
       <ng-template pTemplate="caption">
         Listagem de vendas
       </ng-template>
 
       <ng-template pTemplate="header">
         <tr>
-          <th class="col-header-id">Código</th>
-          <th>Cliente</th>
-          <th>Data cadastro</th>
-          <th>Total</th>
+          <th *ngFor="let col of cols"> {{ col.header }} </th>
           <th style="width: 60px">Ação</th>
+        </tr>
+        <tr>
+          <th *ngFor="let col of cols" [ngSwitch]="col.field">
+            <input style="width: 100%" *ngSwitchCase="'id'" pInputText type="text" (input)="dt.filter($event.target.value, col.field, 'equals')">
+            <input style="width: 100%" *ngSwitchCase="'cliente.nome'" pInputText type="text" (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)">
+            <input style="width: 100%" *ngSwitchCase="'cadastro'" pInputText type="text" (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)">
+            <input style="width: 100%" *ngSwitchCase="'total'" pInputText type="text" (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)">
+          </th>
+          <th></th>
         </tr>
       </ng-template>
 
       <ng-template pTemplate="body" let-venda>
+
         <tr>
           <td>
             <span class="ui-column-title">Código</span>

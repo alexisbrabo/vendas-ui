@@ -11,15 +11,23 @@ import { VendasService } from '../../services/vendas/vendas.service';
 export class VendasListagemComponent implements OnInit {
 
   vendas: Array<any>;
+  cols: any[];
 
   constructor(private vendaService: VendasService, private messageService: MessageService,
-              private confirmationService: ConfirmationService) { }
+    private confirmationService: ConfirmationService) { }
 
   ngOnInit() {
     this.listar();
+
+    this.cols = [
+      { field: 'id', header: 'Código' },
+      { field: 'cliente.nome', header: 'Cliente' },
+      { field: 'cadastro', header: 'Data de Cadastro' },
+      { field: 'total', header: 'Total' }
+    ];
   }
 
-  listar(){
+  listar() {
     this.vendaService.listar().subscribe(response => this.vendas = response);
   }
 
@@ -32,16 +40,16 @@ export class VendasListagemComponent implements OnInit {
       acceptLabel: 'Sim',
       rejectLabel: 'Não',
       accept: () => {
-        this.vendaService.deletar(venda).subscribe(response =>{
+        this.vendaService.deletar(venda).subscribe(response => {
 
-          this.messageService.add({ severity: 'success', detail: 'Venda deletada com sucesso'})
-    
+          this.messageService.add({ severity: 'success', detail: 'Venda deletada com sucesso' })
+
           this.listar();
         })
       }
     });
 
-    
+
   }
 
 }

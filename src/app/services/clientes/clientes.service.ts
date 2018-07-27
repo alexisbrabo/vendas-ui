@@ -27,7 +27,7 @@ export class ClientesService {
     return this.http.delete<any>(`${this.api}/clientes/delete/${cliente.id}`).pipe(catchError(this.errorHandler));
   }
 
-  errorHandler(error: HttpErrorResponse){
+  errorHandler(error: HttpErrorResponse) {
     return throwError(error.message || "Server Error");
   }
 }

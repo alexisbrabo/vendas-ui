@@ -17,7 +17,7 @@ export class ClienteCadastroEListagemComponent implements OnInit {
   errorMsg;
 
   constructor(private clienteService: ClientesService,
-     private messageService: MessageService, private confirmationService: ConfirmationService) { }
+    private messageService: MessageService, private confirmationService: ConfirmationService) { }
 
   ngOnInit() {
     this.clienteService.listarClientes().subscribe(response => this.clientes = response);
@@ -28,10 +28,10 @@ export class ClienteCadastroEListagemComponent implements OnInit {
     this.cliente = { nome: '' };
   }
 
-  atualizarCliente(cliente: any){
+  atualizarCliente(cliente: any) {
     this.clienteService.atualizar(cliente).subscribe(response => {
-    
-      this.messageService.add({ severity: 'info', detail: 'Cliente editado com sucesso'});
+
+      this.messageService.add({ severity: 'info', detail: 'Cliente editado com sucesso' });
 
       this.clienteService.listarClientes().subscribe(response => this.clientes = response);
 
@@ -39,12 +39,12 @@ export class ClienteCadastroEListagemComponent implements OnInit {
   }
 
   adicionar(frm: FormGroup) {
-      this.clienteService.adicionar(this.cliente).subscribe(response => {
+    this.clienteService.adicionar(this.cliente).subscribe(response => {
       frm.reset();
 
       this.novoCadastro();
 
-      this.messageService.add({ severity: 'success', detail: 'Cliente cadastrado com sucesso'})
+      this.messageService.add({ severity: 'success', detail: 'Cliente cadastrado com sucesso' })
 
       this.clienteService.listarClientes().subscribe(response => this.clientes = response);
     })
@@ -59,17 +59,19 @@ export class ClienteCadastroEListagemComponent implements OnInit {
       acceptLabel: 'Sim',
       rejectLabel: 'Não',
       accept: () => {
-        this.clienteService.deletar(cliente).subscribe(response =>{
+        this.clienteService.deletar(cliente).subscribe(response => {
 
-        this.messageService.add({ severity: 'success', detail: 'Cliente deletado com sucesso'})
-    
-        this.clienteService.listarClientes().subscribe(response => this.clientes = response);
+          this.messageService.add({ severity: 'success', detail: 'Cliente deletado com sucesso' })
+
+          this.clienteService.listarClientes().subscribe(response => this.clientes = response);
         }, error => {
-          this.messageService.add({ severity: 'error', detail: 'Não foi possível deletar o cliente'})}
-      )}
+          this.messageService.add({ severity: 'error', detail: 'Não foi possível deletar o cliente' })
+        }
+        )
+      }
     });
 
-    
+
   }
 
 }

@@ -7,7 +7,7 @@ import { Observable, throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class ProdutosService {
-  
+
   private api = "http://localhost:8080";
 
   constructor(private http: HttpClient) { }
@@ -28,7 +28,7 @@ export class ProdutosService {
     return this.http.delete<any>(`${this.api}/produtos/delete/${produto.id}`).pipe(catchError(this.errorHandler));
   }
 
-  errorHandler(error: HttpErrorResponse){
+  errorHandler(error: HttpErrorResponse) {
     return throwError(error.message || "Server Error");
   }
 }
